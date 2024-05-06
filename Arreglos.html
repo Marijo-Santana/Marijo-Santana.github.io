@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            header{
+                background-color: aquamarine;
+                padding: 5px;
+                text-align: center;
+                bottom: 0;
+            }
+            body{
+                background-color: bisque;
+                
+            }
+            footer{
+                background-color: lightgrey;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+            table{
+                background-color: lightblue;
+            }
+        </style>
+    </head>
+<body>
+<header>
+    <h1>Java Arreglos</h1>
+</header>
+<p>Click en la opcion</p>
+<button onclick="llenar()">Llenar arreglo</button>
+<button onclick="imprimir()">Imprimir arreglo</button>
+<button onclick="ordenar()">Ordenar arreglo</button>
+<button onclick="invertir()">Invertir arreglo</button>
+<button onclick="tabla()">Convertir a tabla</button>
+<p id="demo"></p>
+<script>
+    var arreglo=[0,0,0,0,0,0,0,0,0,0];
+function llenar() {
+    document.getElementById("demo").innerHTML = "Cambiando valores...";
+    for(i=0;i<10;i++)
+    {
+        arreglo[i]=Math.floor(Math.random()*100)+1;
+    }
+}
+function imprimir() {
+    document.getElementById("demo").innerHTML = "El contenido del arreglo: "+arreglo;
+}
+function ordenar() {
+    arreglo=arreglo.sort(function(a, b){return a - b});
+    document.getElementById("demo").innerHTML = "Ordenado de menor a mayor: "+arreglo;
+}
+function invertir() {
+    arreglo=arreglo.reverse();
+    document.getElementById("demo").innerHTML = "Arreglo invertido: "+arreglo;
+}
+function tabla(){
+    var texto="";
+    texto=texto+"<table border=1><tr>";
+        for(i=1;i<10;i++)
+        {
+            texto=texto+"<td>"+arreglo[i]+"</td>";
+        }
+    texto=texto+"</tr></table>";
+    document.getElementById("demo").innerHTML=texto;
+}
+</script>
+</body>
+<footer>
+    <p>Programado por: Maria Jose Santana Martinez</p>
+</footer>
+</html>

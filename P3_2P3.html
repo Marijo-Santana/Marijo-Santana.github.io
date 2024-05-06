@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Reto grados</title>
+  <script type = "text/javascript">
+    function convertir() {
+    var cel1= parseInt(document.forms[0].cel.value);
+    var opcion1=parseInt(document.forms[0].opcion.value);
+    var grados1= 0;
+   
+ 
+    //document.write("°C");
+    if(opcion1==1)
+    {
+        grados1=cel1+273.15;
+    }
+    if(opcion1==2)
+    {
+        grados1=(1.8*cel1)+32;
+    }
+ 
+    document.write("Tu opcion: ");
+    document.write(opcion1);
+    document.write("Equivale a: ");
+    document.write(grados1);
+ 
+    return true;
+  }
+  </script>
+</head>
+<body>
+<form onsubmit="return convertir()">
+<p>Grados celsius <input id="cel" name="cel" type="text" /></p>
+<p>Convertir a:
+    <select name="opcion" id="opcion">
+        <option value="1">Kelvin</option>
+        <option value="2">Farenheit</option>
+    </select>
+</p>
+<p><input type="submit" /></p>
+</form>
+</body>
+</html>

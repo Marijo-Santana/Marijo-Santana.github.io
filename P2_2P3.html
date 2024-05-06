@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Bienvenida del usuario</title>
+  <script type = "text/javascript">
+   
+  function contraseña(){
+    var usuario1=document.forms[0].usuario.value;
+    var contra1=document.forms[0].contra.value;
+    if((usuario1=='admin')&&(contra1=='admin'))
+    {
+        document.write("Acesso Permitido");
+    }
+    else
+    {
+        document.write("Acesso No Permitido");
+    }
+    return true;
+  }
+  </script>
+</head>
+<body>
+    <form id="myform" onsubmit="return contraseña();">
+        <p>Usuario <input id="usuario" name="usuario" type="text" /></p>
+        <p>Contraseña <input id="contra" name="contra" type="password" /></p>
+        <p><input type="submit" /></p>
+    </form>
+</body>

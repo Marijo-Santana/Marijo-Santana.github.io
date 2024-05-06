@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body>
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+<div id="myPlot2" style="width:100%;max-width:700px"></div>
+<div id="myPlot3" style="width:100%;max-width:700px"></div>
+<script>
+//Parcial 1
+const xP1 = ["Progra 1", "Progra Web", "Quimica", "Mate", "Ingles"];
+const yP1 = [9, 8.5, 6.5, 6, 8.5];
+const data = [{
+ x:xP1,
+ y:yP1,
+ type:"bar",
+ orientation:"v",
+ marker: {color:"rgba(0,0,255,0.6)"}
+}];
+const layout = {title:"Parcial 1"};
+Plotly.newPlot("myPlot", data, layout);
+//Parcial 2
+const xP2 = ["Progra 1", "Progra Web", "Quimica", "Mate", "Ingles"];
+const yP2 = [9, 7.5, 4.5, 6, 9];
+const data2 = [{
+ x:xP2,
+ y:yP2,
+ type:"bar",
+ orientation:"v",
+ marker: {color:"rgba(255,0,0,0.6)"}
+}];
+const layout2 = {title:"Parcial 2"};
+Plotly.newPlot("myPlot2", data2, layout2);
+//Parcial 3
+var arreglo=[0,0,0,0,0];
+for(i=0;i<10;i++)
+    {
+        arreglo[i]=Math.floor(Math.random()*10)+1;
+    }
+const xP3 = ["Progra 1", "Progra Web", "Quimica", "Mate", "Ingles"];
+const yP3 = [arreglo[0],arreglo[1], arreglo[2], arreglo[3], arreglo[4]];
+const data3 = [{
+ x:xP3,
+ y:yP3,
+ type:"bar",
+ orientation:"v",
+ marker: {color:"rgba(0,255,0,0.6)"}
+}];
+const layout3 = {title:"Parcial 3"};
+Plotly.newPlot("myPlot3", data3, layout3);
+</script>
+</body>
+</html>
