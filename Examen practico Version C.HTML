@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Practico 3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            background-color: rgb(217, 153, 243);
+        }
+        header{
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(164, 81, 197);
+            color: white;
+            padding: 10px;
+            margin-top: 0px;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+        label, input {
+            margin: 5px 0;
+        }
+        button {
+            margin-top: 10px;
+        }
+        #mensajepdf {
+            margin-top: 20px;
+            width: 50%;
+            height: 350px;
+            float: right;
+            position: fixed;
+            margin-left: 800px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Programa: Los Rusos</h1>
+        <h4>Maria Jose Santana Martinez</h4>
+    </header>
+    
+    <form id="numberForm">
+        <iframe id="mensajepdf"></iframe>
+        <label for="number1">Número 1:</label>
+        <input type="number" id="number1" name="number1" min="0" max="25" required>
+        
+        <label for="number2">Número 2:</label>
+        <input type="number" id="number2" name="number2" min="0" max="25" required>
+        
+        <label for="number3">Número 3:</label>
+        <input type="number" id="number3" name="number3" min="0" max="25" required>
+        
+        <label for="number4">Número 4:</label>
+        <input type="number" id="number4" name="number4" min="0" max="25" required>
+        
+        <label for="number5">Número 5:</label>
+        <input type="number" id="number5" name="number5" min="0" max="25" required>
+        
+        <label for="number6">Número 6:</label>
+        <input type="number" id="number6" name="number6" min="0" max="25" required>
+        
+        <label for="number7">Número 7:</label>
+        <input type="number" id="number7" name="number7" min="0" max="25" required>
+        
+        <label for="number8">Número 8:</label>
+        <input type="number" id="number8" name="number8" min="0" max="25" required>
+        
+        <label for="number9">Número 9:</label>
+        <input type="number" id="number9" name="number9" min="0" max="25" required>
+        
+        <label for="number10">Número 10:</label>
+        <input type="number" id="number10" name="number10" min="0" max="25" required>
+        
+        <button type="button" onclick="convertir()">Convertir a Letras</button>
+        
+    </form>
+    
+
+    <script>
+        let currentMessage = '';
+
+        function convertir() {
+            const form = document.getElementById('numberForm');
+            let mjletras = '';
+            for (let i = 1; i <= 10; i++) {
+                const num = parseInt(form['number' + i].value);
+                if (isNaN(num) || num < 0 || num > 25) {
+                    alert('Por favor, ingrese un número válido entre 0 y 25 en todos los campos.');
+                    return;
+                }
+                mjletras += String.fromCharCode(65 + num);
+            }
+            document.getElementById('mensajepdf').src = '';
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text("Mensaje: " + mjletras, 10, 10);
+            
+            const pdfData = doc.output('datauristring');
+            document.getElementById('mensajepdf').src = pdfData;
+        }
+
+    </script>
+</body>
+</html>
