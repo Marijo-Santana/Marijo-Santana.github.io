@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="jspdf.js"></script>
+
+	<script type="text/javascript" src="jspdf.plugin.addimage.js"></script>
+
+	<script type="text/javascript" src="jspdf.plugin.standard_fonts_metrics.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.split_text_to_size.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.from_html.js"></script>
+    <title>Piramide</title>
+</head>
+<body>
+    <iframe frameborder="0" width="500" height="400"></iframe>
+    <script>
+        
+        var aster = prompt('Caracter');
+var alt = prompt('Altura:');
+alt = parseInt(alt);
+var x=0;
+var y=0;
+
+var doc = new jsPDF();
+doc.setFontSize(22);
+for(var i=0;i<=alt;i++)
+{
+    x=0;
+    doc.setFontSize(10);
+    doc.text(10+x,20+y,""+i);
+    for(var j=0;j<i;j++)
+    {
+        
+        doc.text(20+x,20+y,""+aster);
+        x+=4;
+    }
+    y+=4;
+}
+
+var string = doc.output('datauristring');
+$('iframe').attr('src', string);
+    </script>
+</body>
+</html>

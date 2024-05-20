@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Graficar seno</title>
+    <body>
+        <div>
+            <form id="myform" onsubmit="return alertName();">
+                <p>Inicio <input id="inicio" name="inicio" type="text" /></p>
+                <p>Final <input id="fin" name="fin" type="text" /></p>
+    
+                <p><input type="submit"/></p>
+    
+            </form>
+        </div>
+        <div>
+        <div id="myPlot" style="width:100%;max-width:700px"></div>
+        </div>
+
+        <script>
+             function alertName() {
+                var inicio= parseInt(document.forms[0].inicio.value);
+                var fin= parseInt(document.forms[0].fin.value);
+        let exp = "Math.sin(x)";
+        // Generate values
+        if(inicio>fin || inicio==fin)
+        {
+            alert("El segundo valor debe ser mayor al primero");
+            return false;
+        }
+        const xValues = [];
+        const yValues = [];
+        for (let x = inicio; x <= fin; x += 0.1) {
+        xValues.push(x);
+        yValues.push(eval(exp));
+        }
+        // Display using Plotly
+        const data = [{x:xValues, y:yValues, mode:"lines"}];/*el mode, indica como se va a crear la grafica*/
+        const layout = {title: "y = " + exp};/*concatenado cadenas para crear el titulo*/
+        Plotly.newPlot("myPlot", data, layout);
+        return false;
+    }
+        </script>
+    </body>
+</html>

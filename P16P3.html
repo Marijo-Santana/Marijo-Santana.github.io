@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Graficar funciones</title>
+    <body>
+        <div>
+            <form id="myform" onsubmit="return alertName();">
+                <p>Inicio <input id="inicio" name="inicio" type="text" /></p>
+                <p>Final <input id="fin" name="fin" type="text" /></p>
+                <p>Razón Trigonométrica:
+                    <select id="trigFunction" name="trigFunction">
+                        <option value="Math.sin(x)">Seno</option>
+                        <option value="Math.cos(x)">Coseno</option>
+                        <option value="Math.tan(x)">Tangente</option>
+                    </select>
+                </p>
+    
+                <p><input type="submit"/></p>
+    
+            </form>
+        </div>
+        <div>
+        <div id="myPlot" style="width:100%;max-width:700px"></div>
+        </div>
+
+        <script>
+             function alertName() {
+                var inicio = parseInt(document.forms[0].inicio.value);
+                var fin = parseInt(document.forms[0].fin.value);
+                var trigFunction = document.forms[0].trigFunction.value;
+        
+                // Generate values
+                if (inicio >= fin) {
+                    alert("El segundo valor debe ser mayor al primero");
+                    return false;
+                }
+
+                const xValues = [];
+                const yValues = [];
+                for (let x = inicio; x <= fin; x += 0.1) {
+                    xValues.push(x);
+                    yValues.push(eval(trigFunction));
+                }
+                // Display using Plotly
+                const data = [{x: xValues, y: yValues, mode: "lines"}];
+                const layout = {title: "y = " + trigFunction};
+                Plotly.newPlot("myPlot", data, layout);
+                
+                return false;
+            }
+        </script>
+    </body>
+</html>
